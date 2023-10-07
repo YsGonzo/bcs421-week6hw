@@ -32,26 +32,26 @@ class MainActivity2 : AppCompatActivity() {
         mSeekBar?.min = 15
 
 
-            mSeekBar?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-                override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                    // Changes EditText value after the user taps the SeekBar
-                    if (fromUser) {
-                        seekBarTapped = true
-                    }
-                    // Forces the progress value to to stay within the range of 15-60
-                    val newValue = progress.coerceIn(15, 60)
-                    mSeekBar?.progress = newValue
-
-                    // Sets the EditText element to the seekBar value
-                    // and changes TextView font size to it
-                    mET.setText(newValue.toString())
-                    val fontSize = newValue.toFloat()
-                    mTV.textSize = fontSize
+        mSeekBar?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                // Changes EditText value after the user taps the SeekBar
+                if (fromUser) {
+                    seekBarTapped = true
                 }
+                // Forces the progress value to to stay within the range of 15-60
+                val newValue = progress.coerceIn(15, 60)
+                mSeekBar?.progress = newValue
 
-                override fun onStartTrackingTouch(seekBar: SeekBar?) {}
-                override fun onStopTrackingTouch(seekBar: SeekBar?) {}
-            })
+                // Sets the EditText element to the seekBar value
+                // and changes TextView font size to it
+                mET.setText(newValue.toString())
+                val fontSize = newValue.toFloat()
+                mTV.textSize = fontSize
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {}
+        })
 
         mBtn1.setOnClickListener{
             supportFragmentManager.beginTransaction().apply {
